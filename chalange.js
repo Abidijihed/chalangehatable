@@ -1,39 +1,55 @@
-/*
-Queue Stack
-Write a stack. Once you’re done, implement a queue using two stacks to create FIFO behavior. 
-The queue should not have any storage separate from its stacks.
-*/
+/**
+ * Create a hash table with `insert()`, `retrieve()`, and `remove()` methods.
+ * Be sure to handle hashing collisions correctly.
+ * Set your hash table up to double the storage limit as
+ * soon as the total number of items stored is greater than
+ * 3/4th of the number of slots in the storage array.
+ * Resize by half whenever utilization drops below 1/4.
+ */
 
-var Stack = function() {
-    var storage = [];
+// This is a "hashing function". You don't need to worry about it, just use it
+// to turn any string into an integer that is well-distributed between
+// 0 and max - 1
+var getIndexBelowMaxForKey = function(str, max) {
+  var hash = 0;
+  for (var i = 0; i < str.length; i++) {
+    hash = (hash << 5) + hash + str.charCodeAt(i);
+    hash = hash & hash; // Convert to 32bit integer
+    hash = Math.abs(hash);
+  }
+  return hash % max;
+};
+
+var makeHashTable = function() {
+  var result = {};
+  var storage = [];
+  var storageLimit = 4;
+  var size = 0;
   
-    this.push = function(element) {
-       /*............*/
-    };
-  
-    this.pop = ()=>  ( /*............*/)
-        
-    
-  
-    this.size = ()=> ( /*............*/);
-           
-  
+  result.insert = function(value) {
+    // TODO: implement `insert`
+  var bucket =[]
+ var index = getIndexBelowMaxForKey(value,storageLimit)
+ 
+
+ 
+
+
+
   };
-  
-  var Queue = function() {
-    var inbox = new Stack();
-    var outbox = new Stack();
-  
-    this.enqueue = function(element) {
-  
-           
-        
-    };
-  
-    this.dequeue = function() {
-    
-    };
-  
-    this.size = ()=> 
-  
+
+  result.retrieve = function(value) {
+  	var index =getIndexBelowMaxForKey(value,storageLimit)
+ 
+    // TODO: implement `retrieve`
   };
+
+  result.remove = function(value) {
+    // TODO: implement `remove`
+    var index = getIndexBelowMaxForKey(value,storageLimit)
+
+
+  };
+
+  return result;
+};
